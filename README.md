@@ -10,6 +10,7 @@ Here is a program to print all the component from an item. Here the spec :
     
 
 U can add this following LOC on main function :
+
 Define your item
 
 `itemVar := defineItem(itemName)`
