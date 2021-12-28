@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type barang struct {
+type item struct {
 	name      string
 	component []*component
 	part      []*part
@@ -20,19 +20,19 @@ type component struct {
 	name string
 }
 
-func defineItem(name string) *barang {
-	brg := &barang{
+func defineItem(name string) *item {
+	itm := &item{
 		name: name,
 	}
-	return brg
+	return itm
 }
 
-func (b *barang) insertPart(partName string) *part {
+func (i *item) insertPart(partName string) *part {
 	p := &part{
 		name: partName,
 	}
 
-	b.part = append(b.part, p)
+	i.part = append(i.part, p)
 
 	return p
 }
@@ -47,12 +47,12 @@ func (pa *part) insertPart(partName string) *part {
 	return p
 }
 
-func (b *barang) insertComponent(compName string) {
+func (i *item) insertComponent(compName string) {
 	c := &component{
 		name: compName,
 	}
 
-	b.component = append(b.component, c)
+	i.component = append(i.component, c)
 }
 
 func (p *part) insertComponent(compName string) {
@@ -63,12 +63,12 @@ func (p *part) insertComponent(compName string) {
 	p.component = append(p.component, c)
 }
 
-func (b *barang) printComponent() {
-	for _, comp := range b.component {
+func (i *item) printComponent() {
+	for _, comp := range i.component {
 		fmt.Println(comp.name)
 	}
 
-	for _, part := range b.part {
+	for _, part := range i.part {
 		if len(part.component) > 0 {
 			for _, c := range part.component {
 				fmt.Println(c.name)
